@@ -1,0 +1,12 @@
+%table.table.table-striped.table-hover
+  %thead
+    %tr
+      %th Nome
+  %tbody
+  - @generos.each do |genero|
+    %tr
+      %td=genero.nome
+      %td= link_to 'Editar', edit_genero_path(genero), class:'btn-sm btn-success'
+      %td= link_to 'Delete', genero, class:'btn-sm btn-danger', :method => :delete, :data => { :confirm => 'Deseja realmente excluir esse gênero?' }
+.col.md-6.col-md-offset-5
+  =paginate @generos

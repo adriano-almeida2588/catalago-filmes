@@ -1,0 +1,12 @@
+=simple_form_for @filme do |f|
+	= f.error_notification
+	.form-inputs
+	=f.input :titulo
+	=f.input :imagem, as: :file
+	=f.input :sinopse, as: :text
+	=f.input :diretor
+	=f.input :data_lancamento, as: :date, formats: :only_year
+	=f.association :genero, label_method: :nome, prompt: "Selecione um gênero"
+	=f.input :user_id, as: :hidden, selected: @filme
+	=f.input :produtora
+	=f.button :submit, "Salvar Filme", class:'btn btn-primary'

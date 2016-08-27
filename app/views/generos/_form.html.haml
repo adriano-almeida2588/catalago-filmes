@@ -1,0 +1,6 @@
+=simple_form_for @genero do |f|
+	= f.error_notification
+	.form-inputs
+	=f.input :nome
+	=f.input :user_id, as: :hidden, selected: @genero
+	=f.button :submit, "Salvar Gênero", class:'btn btn-primary'

@@ -1,0 +1,18 @@
+.panel.panel-primary
+  .panel-heading
+    %h3.panel-title=@filme.titulo
+  .panel-body
+    .row.md-6.col-md-4
+      =image_tag @filme.imagem.url(:original)
+    .col.md-6.col-md-offset-3
+      %h4="Sinopse"
+      %p=@filme.sinopse
+      %h4="Diretor"
+      %p=@filme.diretor
+      %h4="Gênero"
+      %p=@filme.genero.nome
+      %h4="Ano Lançamento"
+      %p=l(@filme.data_lancamento, formats: :only_year)
+      %h4="Produtora"
+      %p=@filme.produtora
+      =link_to 'Ver Todos', filmes_path, class:'btn btn-success'

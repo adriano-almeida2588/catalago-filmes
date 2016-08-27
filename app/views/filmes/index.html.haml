@@ -1,0 +1,24 @@
+- if @filmes.size != nil
+  %table.table.table-striped.table-hover
+    %thead
+      %tr
+        %th Título
+        %th Diretor
+        %th Lançamento
+        %th Gênero
+        %th Produtora
+    %tbody
+    - @filmes.each do |filme|
+      %tr
+        %td=filme.titulo
+        %td=filme.diretor
+        %td=l(filme.data_lancamento, formats: :only_year)
+        %td=filme.genero.nome
+        %td=filme.produtora
+        %td= link_to 'Detalhes', filme_path(filme), class:'btn-sm btn-info'
+        %td= link_to 'Editar', edit_filme_path(filme), class:'btn-sm btn-success'
+        %td= link_to 'Delete', filme, class:'btn-sm btn-danger', :method => :delete, :data => { :confirm => 'Deseja realmente excluir esse filme?' }
+  .col.md-6.col-md-offset-5
+    =paginate @filmes
+- else
+  %p= "Nenhum registro encontrado."
